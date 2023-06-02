@@ -1,9 +1,10 @@
 #include "timer.hpp"
 #include "pch.hpp"
 #include <filesystem>
+#include <variant>
 namespace fs = std::filesystem;
 class A {
-  public:
+public:
 };
 auto test_func() {
     TIMEIT;
@@ -18,6 +19,6 @@ int main(int args, char *argv[]) {
     TIMER_SESSION_BEGIN("timer test");
     test_func();
     TIMER_SESSION_END;
-    std::cout << toy::GetExePath();
+    std::cout << toy::GetExePath().string();
     return 0;
 }

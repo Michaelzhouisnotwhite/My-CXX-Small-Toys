@@ -12,15 +12,21 @@
 #include <functional>
 #include <iostream>
 #include <memory>
+#include <string>
 #include <string_view>
 #include <thread>
-#include <fstream>
+#include <variant>
+
 
 #ifdef _WIN32// 如果是Windows平台
 #include <windows.h>
 #elif// 如果是Linux平台
 #include <unistd.h>
 #endif
+namespace fs = std::filesystem;
+namespace ch = std::chrono;
+using namespace std::chrono_literals;
+using namespace std::string_literals;
 namespace toy {
     auto GetExePath() {
 #ifdef _WIN32// 如果是Windows平台
@@ -31,11 +37,6 @@ namespace toy {
         ssize_t count = readlink("/proc/self/exe", buffer, PATH_MAX);
         if (count < 0 || count >= PATH_MAX) return "";
 #endif
-        std::filesystem::path path(buffer);
-        return path.parent_path().string();
+        return std::filesystem::path(buffer).parent_path();
     }
 }// namespace toy
-namespace fs = std::filesystem;
-namespace ch = std::chrono;
-using namespace std::chrono_literals;
-using namespace std::string_literals;
