@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.23)
+project("CXX Small Toys")
+set(CMAKE_CXX_STANDARD 17)
+project(CheckMemLeak)
+# find_package(fmt REQUIRED CONFIG)
+add_subdirectory(CheckMemLeak)
+add_subdirectory(example)
+add_subdirectory(fmt)

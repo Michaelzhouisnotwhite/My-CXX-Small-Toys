@@ -1,0 +1,19 @@
+#pragma once
+#include <bits/chrono.h>
+#include <chrono>
+#include <cstdint>
+#include <cstdio>
+#include <fmt/core.h>
+#include <iostream>
+#include <memory>
+#include <bits/chrono.h>
+#include <chrono>
+#include <thread>
+#include <chrono>
+#include <string_view>
+#include <corecrt.h>
+#include <cstddef>
+#include <fstream>
+#include <algorithm>
+#include <functional>
+using namespace std::string_literals;
