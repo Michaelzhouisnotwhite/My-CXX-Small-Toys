@@ -1,8 +1,11 @@
 # Generated from CLion C/C++ Code Style settings
+# Language: CppAlign
 BasedOnStyle: LLVM
-AccessModifierOffset: -2
-IndentWidth: 4
 
+IndentWidth: 4
+AccessModifierOffset: -4
+# VerilogBreakBetweenInstancePorts: false // 17版本才来
+IndentAccessModifiers: false
 AlignAfterOpenBracket: AlwaysBreak
 AlignConsecutiveAssignments: None
 AlignOperands: Align
@@ -10,18 +13,18 @@ BreakBeforeBinaryOperators: All
 EmptyLineBeforeAccessModifier: LogicalBlock
 AllowAllArgumentsOnNextLine: false
 AllowAllConstructorInitializersOnNextLine: false
-AllowAllParametersOfDeclarationOnNextLine: false
+# AllowAllParametersOfDeclarationOnNextLine: false
 LambdaBodyIndentation: Signature
-
+ExperimentalAutoDetectBinPacking: true
 BinPackArguments: false
 BinPackParameters: false
 #BreakArrays: true
-
+IndentRequiresClause: false
 AllowShortBlocksOnASingleLine: Never
 AllowShortCaseLabelsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: None
 AllowShortIfStatementsOnASingleLine: Always
-AllowShortLambdasOnASingleLine: All
+AllowShortLambdasOnASingleLine: Empty
 AllowShortLoopsOnASingleLine: true
 AlwaysBreakAfterReturnType: None
 AlwaysBreakTemplateDeclarations: Yes

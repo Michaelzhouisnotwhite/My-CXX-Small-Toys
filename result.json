@@ -1,11 +1,15 @@
-{"otherData": {},"traceEvents":[
-            {
-                "cat": "function",
-                "dur": 3006,
-                "name": "auto test_func()",
-                "ph": "X",
-                "pid": 0,
-                "tid": 15729502191765196471,
-                "ts": 1685702806154
-            }
+
+{
+    "otherData": {},
+    "traceEvents":[
+
+{
+    "cat": "function",
+    "dur": 3010531400,
+    "name": "auto test_func()",
+    "ph": "X",
+    "pid": 0,
+    "tid": 15729502191765196471,
+    "ts": 1685728225626123
+}
         ]}
