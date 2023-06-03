@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.23)
 set(CMAKE_CXX_STANDARD 17)
 project(my_cxx_toys)
 option(TIMER_VERBOSE "is timer verbose" OFF)
-option(BUILD_EXAMPLE "build example" ON)
+option(BUILD_EXAMPLE "build example" OFF)
 
 if(${BUILD_EXAMPLE})
     add_subdirectory(example)
