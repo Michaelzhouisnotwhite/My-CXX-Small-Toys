@@ -1,4 +1,4 @@
-#include "check_mem_leak.hpp"
+#include "toy/check_mem_leak.hpp"
 #include <fmt/core.h>
 #include <memory>
 
@@ -9,6 +9,6 @@ class Foo {
 int main(int args, char *argv[]) {
     { auto x = std::make_shared<Foo>(); }
     auto x = ALIGN(10);
-    check_leaks();
+    toy::check_leaks();
     return 0;
 }

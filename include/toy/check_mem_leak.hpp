@@ -11,9 +11,11 @@
 #include <memory>
 #include <mutex>
 
+namespace toy {
 
-int check_leaks();
-int checkMemCorruption();
+    int check_leaks();
+    int check_mem_corruption();
+}// namespace toy
 
 #ifndef _DEBUG_NEW_ALIGNMENT
 #define _DEBUG_NEW_ALIGNMENT 16
@@ -146,7 +148,7 @@ static void free_pointer(void *usr_ptr, void *addr, bool is_array) {
             print_position(addr, 0);
             std::printf(")\n");
         }
-        checkMemCorruption();
+        toy::check_mem_corruption();
         abort();
     }
     if ((unsigned) is_array
@@ -194,7 +196,7 @@ static void free_pointer(void *usr_ptr, void *addr, bool is_array) {
     free(ptr);
 }
 
-int check_leaks() {
+int toy::check_leaks() {
     int leak_cnt = 0;
     int whitelisted_leak_cnt = 0;
     new_ptr_list_t *ptr = new_ptr_list.next;
@@ -228,7 +230,7 @@ int check_leaks() {
     return leak_cnt;
 }
 
-int checkMemCorruption() {
+int toy::check_mem_corruption() {
     int corrupt_cnt = 0;
     printf("*** Checking for memory corruption: START\n");
     for (new_ptr_list_t *ptr = new_ptr_list.next; ptr != &new_ptr_list;

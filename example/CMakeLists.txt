@@ -1,20 +1,11 @@
 project(example)
 file(GLOB example_srcs "*.cpp")
-option(TIMER_VERBOSE "is timer verbose" OFF)
 
 foreach (example_src IN LISTS example_srcs)
     get_filename_component(example_proj_name ${example_src} NAME)
     message("----${example_proj_name}.exe in example created")
     add_executable(${example_proj_name} ${example_src})
-    target_link_libraries(${example_proj_name} PRIVATE fmt::fmt)
-    target_include_directories(${example_proj_name} PRIVATE "../CheckMemLeak/include" "../Timer" "../public")
-    target_precompile_headers(${example_proj_name} PRIVATE "../public/pch.hpp")
+    target_link_libraries(${example_proj_name} PRIVATE fmt::fmt my_cxx_toys)
+    target_include_directories(${example_proj_name} PRIVATE "../include")
 endforeach ()
 
-
-if (${TIMER_VERBOSE})
-    message("----timer verbose is on")
-    add_compile_definitions(TIMER_VERBOSE=1)
-else ()
-    add_compile_definitions(TIMER_VERBOSE=0)
-endif ()

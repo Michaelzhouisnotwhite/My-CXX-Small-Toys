@@ -1,8 +1,14 @@
+# cmake & compiler
 *build*
+
+# IDE
 .vscode/**
 !.vscode/launch.json
 !.vscode/tasks.json
 .idea
 .vscode/launch.json
 .vscode/tasks.json
-fmt
+.fleet
+
+3dparty/*
+!3dparty/CMakeLists.txt
