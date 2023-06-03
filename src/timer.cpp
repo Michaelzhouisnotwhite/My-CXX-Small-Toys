@@ -80,14 +80,14 @@ namespace toy {
             {timer_name_, start_time_, end_time, thread_id});
 
 #if TIMER_VERBOSE
-        std::cout << (fmt::format(
-            R"(
-thread id: {} 
-dur: {}ms
+        std::cout << fmt::format(
+            R"(thread id: {} 
+dur: {}ns ({}ms)
 name: {})",
             thread_id,
             duration,
-            timer_name_))
+            duration / 1000,
+            timer_name_)
                   << std::endl;
 
 #endif
