@@ -1,6 +1,6 @@
-#include "pch.hpp"
 #include "toy/include.h"
-#include <string_view>
+#include "toy/pch.hpp"
+
 
 using namespace std::chrono_literals;
 
@@ -8,7 +8,12 @@ namespace toy {
 
     void TimerRecorder::begin_session(
         const std::string &session_name, const std::string &filepath) {
-        output_stream_.open(filepath, std::ios::out);
+
+        if (fs::is_directory(filepath)) {
+            output_stream_.open(fs::path(filepath) / "result.json", std::ios::out);
+        } else {
+            output_stream_.open(filepath, std::ios::out);
+        }
         current_session_
             = std::make_unique<timer_session_t>(timer_session_t{session_name});
         this->write_profile_header();
@@ -59,10 +64,7 @@ namespace toy {
     }
     void TimerRecorder::write_profile_footer() {
         std::unique_lock<std::mutex> lock(write_lock_);
-        output_stream_ << R"(
-        {
-            "otherData": {},
-            "traceEvents":[)";
+        output_stream_ << "]}";
         output_stream_.flush();
     }
     TimerRecorder &TimerRecorder::get() {

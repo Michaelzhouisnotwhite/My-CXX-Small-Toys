@@ -1,6 +1,5 @@
 #pragma once
 #include <algorithm>
-#include <bits/chrono.h>
 #include <chrono>
 #include <corecrt.h>
 #include <cstddef>
@@ -18,12 +17,18 @@
 #include <variant>
 #include <ios>
 #include <mutex>
+#include <queue>
+#include <condition_variable>
+#include <future>
 
 
 #ifdef _WIN32// 如果是Windows平台
 #include <windows.h>
 #elif// 如果是Linux平台
 #include <unistd.h>
+
+#include <sys/sysinfo.h>
+
 #endif
 namespace toy {
     namespace fs = std::filesystem;
