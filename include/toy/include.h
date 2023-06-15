@@ -9,6 +9,9 @@
 #define TIMER_SESSION_BEGIN(...)                                               \
     toy::TimerRecorder::get().begin_session(__VA_ARGS__)
 #endif
+#ifndef DEBUG
+#define DEBUG 1
+#endif
 
 #ifndef TIMER_VERBOSE
 #define TIMER_VERBOSE 0
@@ -19,6 +22,13 @@
 namespace fs = std::filesystem;
 namespace ch = std::chrono;
 namespace toy {
+    template<typename... Args>
+    void print_if_debug(Args &&...args) {
+#if DEBUG
+        fmt::println(std::forward<Args>(args)...);
+#endif
+    }
+
     std::filesystem::path GetExePath();
     struct profile_result_t {
         using hr_time_point = ch::high_resolution_clock::time_point;
