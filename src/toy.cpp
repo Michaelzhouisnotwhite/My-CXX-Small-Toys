@@ -11,3 +11,13 @@ std::filesystem::path toy::GetExePath() {
 #endif
         return std::filesystem::path(buffer).parent_path();
 }
+
+std::uint64_t toy::get_core_nums()  {
+#ifdef _WIN32
+        SYSTEM_INFO sys_info;
+        GetSystemInfo(&sys_info);
+        return sys_info.dwNumberOfProcessors;
+#else
+        return get_nprocs();
+#endif
+    }
