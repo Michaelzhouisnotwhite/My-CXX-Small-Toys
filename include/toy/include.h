@@ -22,6 +22,15 @@
 namespace fs = std::filesystem;
 namespace ch = std::chrono;
 namespace toy {
+    std::uint64_t get_core_nums() {
+#ifdef _WIN32
+        SYSTEM_INFO sys_info;
+        GetSystemInfo(&sys_info);
+        return sys_info.dwNumberOfProcessors;
+#else
+        return get_nprocs();
+#endif
+    }
     template<typename... Args>
     void print_if_debug(Args &&...args) {
 #if DEBUG
