@@ -23,7 +23,7 @@
 
 #ifdef _WIN32// 如果是Windows平台
 #include <windows.h>
-#elif// 如果是Linux平台
+#else// 如果是Linux平台
 #include <unistd.h>
 
 #include <sys/sysinfo.h>
