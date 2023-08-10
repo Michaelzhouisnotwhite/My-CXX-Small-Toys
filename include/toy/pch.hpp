@@ -1,7 +1,6 @@
 #pragma once
 #include <algorithm>
 #include <chrono>
-#include <corecrt.h>
 #include <cstddef>
 #include <cstdint>
 #include <cstdio>
