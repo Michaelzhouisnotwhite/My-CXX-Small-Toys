@@ -22,6 +22,15 @@
 namespace fs = std::filesystem;
 namespace ch = std::chrono;
 namespace toy {
+    template<typename EnumTarget, typename Function>
+    void enumerate(EnumTarget target, Function func) {
+        auto i = std::uint64_t{0};
+        for (auto &value: target) {
+            auto key = i;
+            func(key, value);
+            i++;
+        }
+    }
     std::uint64_t get_core_nums();
     template<typename... Args>
     void print_if_debug(Args &&...args) {
