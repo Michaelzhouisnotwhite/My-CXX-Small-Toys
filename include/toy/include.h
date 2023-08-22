@@ -21,14 +21,15 @@
 #endif
 namespace fs = std::filesystem;
 namespace ch = std::chrono;
+using namespace std::placeholders;
 namespace toy {
     template<typename EnumTarget, typename Function>
     auto enumerate(EnumTarget target, Function func) {
-        using res_type = typename std::invoke_result<Function>;
-        using EnumerateFuncType = std::function<bool(uint64_t, EnumTarget)>;
+        using res_type = std::invoke_result_t<Function, uint64_t, EnumTarget>;
+        auto enum_func = std::bind(func, _1, _2);
         static_assert(
-            std::is_same<typename EnumerateFuncType::value, Function>::value,
-            "enumerate function type must be bool(uint64_t, EnumTargetType)");
+            std::is_same<bool, res_type>::value,
+            "enumerate function return type must be bool");
         auto i = std::uint64_t{0};
         for (auto &value: target) {
             auto key = i;
