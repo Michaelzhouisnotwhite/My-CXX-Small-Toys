@@ -25,7 +25,7 @@ using namespace std::placeholders;
 namespace toy {
     template<typename EnumTarget, typename Function>
     auto enumerate(EnumTarget target, Function func) {
-        using res_type = std::invoke_result_t<Function, uint64_t, EnumTarget>;
+        using res_type = std::invoke_result_t<Function, uint64_t, typename EnumTarget::value_type>;
         auto enum_func = std::bind(func, _1, _2);
         static_assert(
             std::is_same<bool, res_type>::value,
