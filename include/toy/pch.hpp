@@ -19,6 +19,9 @@
 #include <queue>
 #include <condition_variable>
 #include <future>
+#include <functional>
+#include <optional>
+
 
 
 #ifdef _WIN32// 如果是Windows平台
