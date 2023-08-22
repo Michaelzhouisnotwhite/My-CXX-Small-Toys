@@ -24,7 +24,7 @@ namespace ch = std::chrono;
 namespace toy {
     template<typename EnumTarget, typename Function>
     auto enumerate(EnumTarget target, Function func) {
-        using res_type = typename std::invoke_result<Function>::type;
+        using res_type = typename std::invoke_result<Function>;
         using EnumerateFuncType = std::function<bool(uint64_t, EnumTarget)>;
         static_assert(
             std::is_same<typename EnumerateFuncType::value, Function>::value,
