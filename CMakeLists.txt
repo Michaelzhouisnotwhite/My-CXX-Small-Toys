@@ -19,14 +19,7 @@ function(fetch_content_check content_name)
 endfunction()
 
 if(${BUILD_TOY_EXAMPLE})
-    FetchContent_Declare(
-        cpr
-        GIT_REPOSITORY https://github.com/libcpr/cpr
-        GIT_TAG 2553fc41450301cd09a9271c8d2c3e0cf3546b73
-        OVERRIDE_FIND_PACKAGE
-    )
-    message("---- example ready to build")
-    fetch_content_check(cpr)
+
     add_subdirectory(example)
 endif()
 
@@ -38,6 +31,7 @@ FetchContent_Declare(
 )
 fetch_content_check(fmt)
 
+
 # find_package(fmt REQUIRED)
 # add_subdirectory(3dparty)
 if(${TIMER_VERBOSE})
@@ -46,13 +40,12 @@ if(${TIMER_VERBOSE})
 else()
     add_compile_definitions(TIMER_VERBOSE=0)
 endif()
+set(include_dir_prefix ${my_cxx_toys_SOURCE_DIR}/include)
+add_subdirectory(src/generic)
+add_subdirectory(src/cpperclip)
 
-file(GLOB src_files src/*.cpp)
-add_library(${PROJECT_NAME} ${src_files})
-add_library(my_cxx_toys::toy ALIAS my_cxx_toys)
-target_precompile_headers(${PROJECT_NAME} PUBLIC include/toy/pch.hpp)
-target_link_libraries(${PROJECT_NAME} fmt::fmt)
-target_include_directories(${PROJECT_NAME} PUBLIC "include")
+
+
 # install(TARGETS ${PROJECT_NAME} LIBRARY DESTINATION lib)
 
 # include(CPack)

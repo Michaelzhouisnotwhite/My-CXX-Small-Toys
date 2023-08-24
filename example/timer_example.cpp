@@ -20,7 +20,7 @@ auto test_func() {
 int main(int args, char *argv[]) {
     TIMER_SESSION_BEGIN("timer test");
     test_func();
-    std::cout << toy::GetExePath().string();
+    std::cout << toy::GetExePath().string() << std::endl;
     TIMER_SESSION_END;
     return 0;
 }
