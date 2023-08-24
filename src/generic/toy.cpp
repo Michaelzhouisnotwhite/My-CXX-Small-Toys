@@ -1,10 +1,10 @@
 #include "toy/include.h"
-#include "toy/pch.hpp"
+#include "private/pch.hpp"
 
 #ifdef PATH_MAX
 #undef PATH_MAX
-#define PATH_MAX 1024
 #endif
+#define PATH_MAX 1024
 std::filesystem::path toy::GetExePath() {
 #ifdef _WIN32// 如果是Windows平台
     char buffer[MAX_PATH] = {0};

@@ -1,4 +1,5 @@
 #include "toy/include.h"
+#include <iostream>
 
 
 int main(int args, char *argv[]) {

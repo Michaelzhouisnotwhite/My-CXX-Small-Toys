@@ -167,6 +167,7 @@ CompileFlags:
     - -Wuninitialized
     - -Wunused-label
     - -Wunused-lambda-capture
+    - -std=gnu++17
     # - --target=x86_64-w64-windows-gnu
     # - -Wall
     # - xc++

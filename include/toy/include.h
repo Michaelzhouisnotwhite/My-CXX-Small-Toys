@@ -1,6 +1,6 @@
 #ifndef INCLUDE_TOY_INCLUDE
 #define INCLUDE_TOY_INCLUDE
-#include "toy/pch.hpp"
+#include "../private/pch.hpp"
 #ifndef TIMEIT
 #define TIMEIT toy::TimerWithRecorder _time(__PRETTY_FUNCTION__)
 #endif

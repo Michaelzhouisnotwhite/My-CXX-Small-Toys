@@ -1,0 +1,7 @@
+project(generic)
+file(GLOB srcs *.[hc]pp)
+add_library(generic ${srcs})
+target_include_directories(generic PUBLIC ${include_dir_prefix})
+add_library(toy::generic ALIAS generic)
+target_precompile_headers(generic PRIVATE ${include_dir_prefix}/private/pch.hpp)
+target_link_libraries(generic PUBLIC fmt::fmt)
