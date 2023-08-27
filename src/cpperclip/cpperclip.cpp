@@ -1,6 +1,11 @@
 #include "toy/cpperclip.hpp"
 #include "private/pch.hpp"
 #include <clip.h>
+#ifndef INTERVAL_TIME
+#define INTERVAL_TIME 300
+#endif
+
+
 namespace toy::cpperclip {
     CpperClipTimeoutError::CpperClipTimeoutError(std::string msg)
         : std::runtime_error(msg), msg_(std::move(msg)) {
@@ -32,10 +37,11 @@ namespace toy::cpperclip {
                 last_paste = temp_value;
                 return temp_value;
             }
+            std::this_thread::sleep_for(
+                std::chrono::milliseconds(INTERVAL_TIME));
             if (!start_time.has_value()) {
                 continue;
             }
-            // std::this_thread::sleep_for(500ms);
             auto duration = (hr_clock::now() - start_time.value()) / 1ms;
             if (duration >= timeout) {
                 throw CpperClipTimeoutError("CpperClipTimeoutError: timeout! "
