@@ -8,7 +8,7 @@ namespace toy::cpperclip {
     class CpperClip {
     public:
         std::string last_paste_{};
-        std::thread wt_, ticktock_thread_;
+        std::thread listening_thread_, ticktock_thread_;
         std::function<void(std::string &result)> callback_;
         template<typename Func>
         explicit CpperClip(Func callback) {
@@ -17,9 +17,6 @@ namespace toy::cpperclip {
                 clip::get_text(last_paste_);
             }
             callback_ = std::bind(callback, _1);
-
-            wt_ = std::thread(&CpperClip::working_thread, this);
-            ticktock_thread_ = std::thread(&CpperClip::ticktock_clock, this);
         }
         CpperClip(const CpperClip &) = delete;
         CpperClip(CpperClip &&) = delete;
@@ -32,8 +29,13 @@ namespace toy::cpperclip {
         bool timeout_ready = true;
         ~CpperClip() {
             // this->stop();
-            wt_.join();
+            listening_thread_.join();
             ticktock_thread_.join();
+        }
+        void start() {
+            stop_flag_ = false;
+            listening_thread_ = std::thread(&CpperClip::working_thread, this);
+            ticktock_thread_ = std::thread(&CpperClip::ticktock_clock, this);
         }
         void working_thread() {
             while (true) {
