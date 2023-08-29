@@ -10,6 +10,7 @@ namespace toy::cpperclip {
     CpperClipTimeoutError::CpperClipTimeoutError(std::string msg)
         : std::runtime_error(msg), msg_(std::move(msg)) {
     }
+    
     std::string wait_for_new_paste(const int64_t timeout) {
         using hr_clock = std::chrono::high_resolution_clock;
         using hr_tp

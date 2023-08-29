@@ -11,6 +11,7 @@ int main(int args, char *argv[]) {
     } catch (std::exception &e) {
         fmt::println(e.what());
     }
+    
     while (true) {
         std::string res = cpperclip::wait_for_new_paste();
         fmt::println("new paste: \n{}", res);
