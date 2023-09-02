@@ -10,7 +10,16 @@ namespace toy::cpperclip {
     CpperClipTimeoutError::CpperClipTimeoutError(std::string msg)
         : std::runtime_error(msg), msg_(std::move(msg)) {
     }
-    
+    std::string get_text_from_clipboard() {
+        std::string content{};
+        if (clip::has(clip::text_format())) {
+            clip::get_text(content);
+        }
+        return content;
+    }
+    void set_text_to_clipboard(const std::string& content) {
+        clip::set_text(content);
+    }
     std::string wait_for_new_paste(const int64_t timeout) {
         using hr_clock = std::chrono::high_resolution_clock;
         using hr_tp

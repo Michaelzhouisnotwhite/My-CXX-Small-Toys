@@ -5,6 +5,13 @@
 #define INTERVAL_TIME 300
 #endif
 namespace toy::cpperclip {
+    //     class CpperClipTimeoutError : public std::runtime_error {
+    // public:
+    //     std::string msg_;
+    //     explicit CpperClipTimeoutError(std::string msg = "");
+    // };
+    void set_text_to_clipboard(const std::string& content);
+    std::string get_text_from_clipboard();
     class CpperClip {
     public:
         std::string last_paste_{};
@@ -38,6 +45,9 @@ namespace toy::cpperclip {
             ticktock_thread_ = std::thread(&CpperClip::ticktock_clock, this);
         }
         void working_thread() {
+            if (!callback_) {
+                throw std::runtime_error("cpperclip has no callback function");
+            }
             while (true) {
                 std::unique_lock<std::mutex> lk(lock_);
                 cv_.wait(lk, [this]() {
