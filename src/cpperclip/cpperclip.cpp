@@ -17,8 +17,11 @@ namespace toy::cpperclip {
         }
         return content;
     }
-    void set_text_to_clipboard(const std::string& content) {
-        clip::set_text(content);
+    void set_text_to_clipboard(const std::string &content) {
+        auto last_content = get_text_from_clipboard();
+        if (content != last_content) {
+            clip::set_text(content);
+        }
     }
     std::string wait_for_new_paste(const int64_t timeout) {
         using hr_clock = std::chrono::high_resolution_clock;
