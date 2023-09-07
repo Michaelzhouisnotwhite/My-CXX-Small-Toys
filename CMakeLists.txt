@@ -44,7 +44,7 @@ set(include_dir_prefix ${my_cxx_toys_SOURCE_DIR}/include)
 add_subdirectory(src/generic)
 add_subdirectory(src/cpperclip)
 
-
+# target_precompile_headers(toy_precompile INTERFACE include/toy/type.h)
 
 # install(TARGETS ${PROJECT_NAME} LIBRARY DESTINATION lib)
 

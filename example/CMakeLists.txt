@@ -19,6 +19,6 @@ foreach(example_src IN LISTS example_srcs)
 
     target_precompile_headers(${sub_proj_name} PRIVATE pch.h)
     target_include_directories(${sub_proj_name} PRIVATE "../include")
-    add_custom_command(TARGET ${sub_proj_name} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -DBINARY_DIR=${CMAKE_BINARY_DIR} -DDESTINATION="${CMAKE_BINARY_DIR}/example" -P ${PROJECT_SOURCE_DIR}/CopyDLLS.cmake)
+    # add_custom_command(TARGET ${sub_proj_name} POST_BUILD
+    #     COMMAND ${CMAKE_COMMAND} -DBINARY_DIR=${CMAKE_BINARY_DIR} -DDESTINATION="${CMAKE_BINARY_DIR}/example" -P ${PROJECT_SOURCE_DIR}/CopyDLLS.cmake)
 endforeach()
