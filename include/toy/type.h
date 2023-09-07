@@ -5,6 +5,7 @@
 #include <map>
 #include <queue>
 #include <set>
+#include <string>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
@@ -26,4 +27,5 @@ TYPE1
 using BTreeSet = std::set<T>;
 TYPE1
 using BinaryHeat=std::priority_queue<T>;
+using String=std::string;
 #endif /* INCLUDE_TOY_TYPE */
