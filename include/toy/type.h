@@ -10,6 +10,8 @@
 #include <unordered_set>
 #include <vector>
 #include <cstdint>
+#include <array>
+#include <algorithm>
 #define TYPE1 template<typename T>
 #define TYPE2 template<typename T, typename A>
 TYPE1
