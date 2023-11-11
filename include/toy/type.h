@@ -42,4 +42,7 @@ using i8 = std::int8_t;
 
 using f32 = float;
 using f64 = double;
+
+template <typename T, u64 A>
+using StaticArray = std::array<T, A>;
 #endif /* INCLUDE_TOY_TYPE */
