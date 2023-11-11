@@ -9,6 +9,7 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
+#include <cstdint>
 #define TYPE1 template<typename T>
 #define TYPE2 template<typename T, typename A>
 TYPE1
